@@ -1,0 +1,139 @@
+.zapis{
+    display: block;       /* Превращаем из строчки в блок */
+    width: fit-content;   /* Ширина будет ровно по тексту кнопки */
+    margin-left: auto;    /* Магия центровки: левый отступ на максимум */
+    margin-right: auto;
+
+    background-color: red;
+    padding: 20px;
+
+    padding-left: 50px;
+    padding-right: 50px;
+
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1); /* Обычный размер */
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    }
+    50% {
+        transform: scale(1.1); /* Увеличиваем на 10% (надуваем) */
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.7); /* Тень тоже растет */
+    }
+    100% {
+        transform: scale(1); /* Спускаем обратно */
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    }
+}
+
+.zapis:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+
+
+.btnZvonok1{
+    padding: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    font-size: 40px;
+    color: white;
+    background-color: #2E0000;
+}
+
+
+.btnZvonok2{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-size: 35px;
+    padding: 5px;
+    color: white;
+    background-color: #570000;
+}
+
+
+
+.ILink{
+    padding-right: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    width: 40%;
+    background-color: #570000;
+}
+
+.ILink1 {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #2E0000;
+}
+
+
+.ILink i{
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
+    font-size: 100px;
+    background-color: #000000;
+}
+
+
+
+
+.route-container {
+    display: flex;
+    justify-content: center; /* Центруем по иксу */
+    margin: 20px 0;
+}
+
+.btn-route {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: red;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-family: sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px 5px rgba(255, 0, 0, 0.439);
+    animation: beatBOX 2s ease-in-out infinite;
+}
+
+
+@keyframes beatBOX {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.7); /* Тень тоже растет */
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    }
+}
+
+
+.btn-route:hover{
+    transform: scale(1.1);
+}
+
+
+/* Иконка (если подключил Font Awesome) */
+.btn-route i {
+    margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    .ILink i{
+        padding: 20px;
+        font-size: 50px;
+    }
+}

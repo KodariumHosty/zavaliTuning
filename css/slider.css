@@ -1,0 +1,74 @@
+.slider-container {
+    overflow: hidden; /* Прячем всё, что вылазит за края экрана */
+    padding: 20px 0;
+    background: transparent; /* Твой градиент будет виден под ними */
+}
+
+.marquee-wrapper {
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+    background-color: #484848;
+    padding: 20px;
+}
+
+.marquee-content {
+    display: flex;
+    gap: 20px; /* Расстояние между фотками */
+    white-space: nowrap;
+}
+
+.marquee-content img {
+    width: 100%; /* Размер фоток подгони под себя */
+    height: 300px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+/* Анимация для движения вправо */
+@keyframes scrollRight {
+    0% { transform: translateX(-50%); } /* Начинаем с середины (дубля) */
+    100% { transform: translateX(0); }  /* Едем в начало */
+}
+
+.track-right {
+    animation: scrollRight 20s linear infinite; /* 20 секунд на круг */
+}
+
+.track-right-slow {
+    animation: scrollRight 30s linear infinite; /* Эта будет медленнее */
+}
+
+/* Чтобы при наведении лента замирала (опционально) */
+.marquee-content:hover {
+    animation-play-state: paused;
+}
+
+
+
+/* --- Анимация ВПРАВО --- */
+@keyframes scrollRight {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+/* --- Анимация ВЛЕВО --- */
+@keyframes scrollLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Применяем к лентам */
+.track-right {
+    animation: scrollRight 35s linear infinite;
+}
+
+.track-left {
+    animation: scrollLeft 30s linear infinite; /* Немного другая скорость для динамики */
+}
+
+/* Общие стили (те же самые) */
+.marquee-content {
+    display: flex;
+    gap: 20px;
+}

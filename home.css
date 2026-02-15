@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Days One", sans-serif;
+}
+
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    /* height: 5000px; */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* Настраиваем градиент */
+    background: linear-gradient(
+        to bottom, 
+        #262626 0%,      /* Начало: светло-серый */
+        #666666 400px,   /* К 400-му пикселю мы только НАЧИНАЕМ плавно темнеть */
+        #333333 70%,     /* Глубокий серый где-то во второй трети страницы */
+        #000000 100%     /* Полный уход в черный к футеру */
+    );
+    background-attachment: scroll;
+}
+
+
+
+.header{
+    padding: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+}
+
+
+.naviGate {
+    display: flex;
+    gap: 15px;
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.naviGate a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block; 
+    padding-bottom: 2px;
+    /* ВОТ ЭТОЙ СТРОЧКИ НЕ ХВАТАЛО: */
+    position: relative; 
+}
+
+.naviGate a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+
+.naviGate a:hover::after {
+    width: 100%;
+}
+
+
+
+.MrDown{
+    height: 60px;
+}
+.MrDown1{
+    height: 20px;
+}
+
+
+
+
+
+
+h3{
+    color: white;
+    font-size: 26px;
+}
+
+h2{
+    color: white;
+    font-size: 40px;
+}
+
+
+
+.containerUslug p{
+    color: white;
+    font-size: 30px;
+    padding-left: 20px;
+}
+
+.containerUslug{
+    border-radius: 20px;
+    background-color: #232323;
+    padding: 30px;
+}
+
+.containerUslug img{
+    border-radius: 20px;
+    box-shadow: 0 0 25px 5px rgba(255, 0, 0, 0.439);
+}
+
+
+
+.develoopFlipper{
+    width: 50%;
+    text-align: center;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+.redFooter{
+    background-color: #AF1A1A;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+
+.develoopFlipper{
+    background-color: #7E1E1E;
+    border-radius: 20px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+}
+
+
+
+
+.cartBack{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+    background-color: gray;
+}
+
+.cartBack{
+    color: white;
+}
+
+.naviDown{
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.naviDown a{
+    color: white;
+    font-size: 30px;
+    transition: all 0.3s;
+}
+
+
+.naviDown a:hover{
+    color: rgb(200, 200, 200);
+}
+
+
+
+
+@media (max-width: 768px) {
+    .header img{
+        width: 20%;
+    }
+
+    .naviGate a{
+        font-size: 18px;
+    }
+
+    .containerUslug p{
+        font-size: 20px;
+    }
+    .containerUslug{
+        padding: 10px;
+    }
+
+    .develoopFlipper{
+        width: 100%;
+    }
+    .cartochka{
+        width: 100%;
+    }
+
+    .logogo{
+        width: 50%;
+    }
+
+    .naviDown{
+        display: none;
+    }
+
+}
