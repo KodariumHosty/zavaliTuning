@@ -72,3 +72,26 @@
     display: flex;
     gap: 20px;
 }
+
+
+
+@media (max-width: 768px) {
+    .track-right {
+        animation: scrollRight 10s linear infinite; /* 20 секунд на круг */
+    }
+
+    .track-right-slow {
+        animation: scrollRight 10s linear infinite; /* Эта будет медленнее */
+    }
+
+    .track-right {
+        animation: scrollRight 15s linear infinite;
+    }
+
+    .track-left {
+        animation: scrollLeft 15s linear infinite; /* Немного другая скорость для динамики */
+    }
+
+
+
+}

@@ -97,22 +97,29 @@ h2{
 }
 
 
-
-.containerUslug p{
-    color: white;
-    font-size: 30px;
-    padding-left: 20px;
-}
-
-.containerUslug{
+.containerUslug {
+    overflow: hidden; /* Важно: чтобы контейнер обнимал плавающую фотку */
     border-radius: 20px;
     background-color: #232323;
     padding: 30px;
 }
 
-.containerUslug img{
+.containerUslug img {
+    float: left; /* Магия обтекания теперь включится */
+    margin-right: 25px; /* Отступ текста справа */
+    margin-bottom: 15px; /* Отступ текста снизу, если он длинный */
+    width: 40%;
+    height: auto;
     border-radius: 20px;
     box-shadow: 0 0 25px 5px rgba(255, 0, 0, 0.439);
+}
+
+.containerUslug p {
+    color: white;
+    font-size: 30px; /* Вернул твой большой размер */
+    line-height: 1.3;
+    margin: 0;
+    /* padding-left убрал, так как margin-right у картинки сделает отступ лучше */
 }
 
 
@@ -123,21 +130,17 @@ h2{
     display: block;
     margin-right: auto;
     margin-left: auto;
+    background-color: #7E1E1E;
+    border-radius: 10px;
+    padding-right: 20px;
+    padding-bottom: 20px;
 }
 
 
 .redFooter{
     background-color: #AF1A1A;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 20px;
-}
-
-
-.develoopFlipper{
-    background-color: #7E1E1E;
-    border-radius: 20px;
-    padding-right: 40px;
-    padding-bottom: 40px;
 }
 
 
@@ -192,7 +195,7 @@ h2{
     }
 
     .develoopFlipper{
-        width: 100%;
+        width: 80%;
     }
     .cartochka{
         width: 100%;
