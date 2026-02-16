@@ -1,7 +1,8 @@
+/* --- Базовые стили (Десктоп) --- */
 .slider-container {
-    overflow: hidden; /* Прячем всё, что вылазит за края экрана */
+    overflow: hidden; 
     padding: 20px 0;
-    background: transparent; /* Твой градиент будет виден под ними */
+    background: transparent;
 }
 
 .marquee-wrapper {
@@ -14,84 +15,72 @@
 
 .marquee-content {
     display: flex;
-    gap: 20px; /* Расстояние между фотками */
+    gap: 20px; 
     white-space: nowrap;
 }
 
 .marquee-content img {
-    width: 100%; /* Размер фоток подгони под себя */
+    /* На десктопе пусть будут покрупнее */
     height: 300px;
+    width: auto; /* Чтобы не сплющило */
     object-fit: contain;
     border-radius: 10px;
 }
 
-/* Анимация для движения вправо */
-@keyframes scrollRight {
-    0% { transform: translateX(-50%); } /* Начинаем с середины (дубля) */
-    100% { transform: translateX(0); }  /* Едем в начало */
-}
-
-.track-right {
-    animation: scrollRight 20s linear infinite; /* 20 секунд на круг */
-}
-
-.track-right-slow {
-    animation: scrollRight 30s linear infinite; /* Эта будет медленнее */
-}
-
-/* Чтобы при наведении лента замирала (опционально) */
-.marquee-content:hover {
-    animation-play-state: paused;
-}
-
-
-
-/* --- Анимация ВПРАВО --- */
+/* --- Анимации --- */
 @keyframes scrollRight {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
 }
 
-/* --- Анимация ВЛЕВО --- */
 @keyframes scrollLeft {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
 
-/* Применяем к лентам */
 .track-right {
-    animation: scrollRight 35s linear infinite;
+    animation: scrollRight 30s linear infinite;
 }
 
 .track-left {
-    animation: scrollLeft 30s linear infinite; /* Немного другая скорость для динамики */
+    animation: scrollLeft 30s linear infinite;
 }
 
-/* Общие стили (те же самые) */
-.marquee-content {
-    display: flex;
-    gap: 20px;
+.track-right-slow {
+    animation: scrollRight 35s linear infinite;
 }
 
+/* Пауза при наведении (на мобилках не особо робит, но пусть будет) */
+.marquee-content:hover {
+    animation-play-state: paused;
+}
 
-
+/* --- АДАПТИВ ПОД МОБИЛКИ (Главная магия тут) --- */
 @media (max-width: 768px) {
-    .track-right {
-        animation: scrollRight 10s linear infinite; /* 20 секунд на круг */
+    .marquee-wrapper {
+        padding: 10px; /* Уменьшаем отступы обертки */
+        margin-bottom: 15px;
     }
 
-    .track-right-slow {
-        animation: scrollRight 10s linear infinite; /* Эта будет медленнее */
+    .marquee-content {
+        gap: 10px; /* Расстояние между фотками поменьше */
     }
 
+    .marquee-content img {
+        height: 150px; /* Уменьшаем высоту в 2 раза, чтобы их больше влезло в экран */
+        border-radius: 8px;
+    }
+
+    /* Ускоряем анимацию, так как путь стал короче из-за размера картинок */
     .track-right {
-        animation: scrollRight 15s linear infinite;
+        animation: scrollRight 30s linear infinite;
     }
 
     .track-left {
-        animation: scrollLeft 15s linear infinite; /* Немного другая скорость для динамики */
+        animation: scrollLeft 30s linear infinite;
     }
 
-
-
+    .track-right-slow {
+        animation: scrollRight 35s linear infinite;
+    }
 }
