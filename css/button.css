@@ -44,7 +44,7 @@
     padding: 10px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     background-color: #2E0000;
 }
@@ -53,7 +53,7 @@
 .btnZvonok2{
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    font-size: 35px;
+    font-size: 25px;
     padding: 5px;
     color: white;
     background-color: #570000;
