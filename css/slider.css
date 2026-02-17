@@ -19,12 +19,24 @@
     white-space: nowrap;
 }
 
+.marquee-content a {
+    display: inline-block;
+    flex-shrink: 0; /* Чтобы фотки не сжимались, если их много */
+}
+
 .marquee-content img {
-    /* На десктопе пусть будут покрупнее */
     height: 300px;
-    width: auto; /* Чтобы не сплющило */
+    width: auto;
     object-fit: contain;
     border-radius: 10px;
+    display: block; /* Убирает лишние отступы снизу */
+    transition: transform 0.3s ease; /* Добавим для красоты */
+}
+
+/* Эффект при наведении на конкретную фотку */
+.marquee-content a:hover img {
+    transform: scale(1.05); /* Слегка увеличиваем при наведении */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
 /* --- Анимации --- */

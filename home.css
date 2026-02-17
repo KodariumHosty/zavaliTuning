@@ -178,6 +178,84 @@ h2{
 
 
 
+
+.slider-mini {
+    float: left;
+    width: 40%;
+    margin-right: 25px;
+    margin-bottom: 15px;
+    overflow: hidden; 
+    border-radius: 20px;
+    box-shadow: 0 0 25px 5px rgba(255, 0, 0, 0.439);
+    aspect-ratio: 4 / 3; 
+    position: relative;
+    /* Убиваем пробелы между инлайновыми элементами, если они есть */
+    font-size: 0; 
+}
+
+.slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    /* Убираем любые зазоры */
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+}
+
+.slider-track img {
+    /* Жестко фиксируем размер, чтобы не было зазоров */
+    flex: 0 0 100%; 
+    min-width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /* Ускоряем рендер для хрома */
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+.slider-track::-webkit-scrollbar {
+    display: none;
+}
+/* Адаптив под мобилки, как у тебя в медиа-запросах */
+@media (max-width: 768px) {
+    .slider-mini {
+        width: 100%; /* На мобилках на всю ширину */
+        float: none;
+        margin-right: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 768px) {
     .header img{
         width: 20%;
