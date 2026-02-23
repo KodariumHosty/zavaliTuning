@@ -30,7 +30,15 @@
     <!-- Цвет темы браузера (опционально) -->
     <meta name="theme-color" content="#ffffff">
 </head>
-<body>
+<body class="cookie-lock"> <div id="cookie-overlay">
+        <div class="cookie-card">
+            <h2>🍪 Cookie!</h2>
+            <p>Они помогают сайту работать быстрее и лучше. Если ты против — их всегда можно выключить в настройках своего браузера.</p>
+            <br>
+            <p>Подробности о том, что и зачем мы используем, лежат в нашем <a href="https://dmitryuday.github.io/UDay/pdf/userAcceptedKodarium.pdf">реестре документов UDay</a>. Нажимая кнопку или продолжая листать сайт, ты подтверждаешь, что согласен с нашими правилами.</p>
+            <button class="btn-accept" id="accept-cookie">Принять и войти</button>
+        </div>
+    </div>
     
     <div class="header">
 
@@ -265,6 +273,9 @@
             <a href="#otziv">Отзывы</a>
             <a href="#contact">Контакты</a>
         </div>
+        <div class="naviDown" style="justify-content: center;">
+            <a href="https://dmitryuday.github.io/UDay/pdf/userAcceptedKodarium.pdf">Политика конфиндециальности</a>
+        </div>
         
         <div class="MrDown1"></div>
         
@@ -301,9 +312,8 @@
 
 
 <script>
-    // 1. ФУНКЦИЯ ОТКРЫТИЯ (Ставь её ПЕРВОЙ)
     window.openFull = function(img) {
-        console.log("Клик сработал на:", img.src); // Для проверки в консоли
+        console.log("Клик сработал на:", img.src);
         const fullScreenDiv = document.createElement('div');
         fullScreenDiv.style = `
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
@@ -311,18 +321,17 @@
             display: flex; align-items: center; justify-content: center; 
             cursor: zoom-out;
         `;
-        
+
         const fullImg = document.createElement('img');
         fullImg.src = img.src;
         fullImg.style = "max-width: 95%; max-height: 95%; border-radius: 10px; border: 2px solid red;";
-        
+
         fullScreenDiv.appendChild(fullImg);
         document.body.appendChild(fullScreenDiv);
-        
+
         fullScreenDiv.onclick = () => fullScreenDiv.remove();
     }
 
-    // 2. ЛОГИКА БЕСКОНЕЧНОГО СКРОЛЛА
     document.querySelectorAll('.slider-track').forEach(track => {
         let isMoving = false;
 
@@ -330,23 +339,63 @@
             if (track.matches(':hover') || isMoving) return;
 
             isMoving = true;
-            const slideWidth = track.offsetWidth; // Берем точную ширину видимой части
+            const slideWidth = track.offsetWidth;
             const maxScroll = track.scrollWidth - slideWidth;
 
-            // Двигаем на один слайд вперед
             track.scrollLeft += slideWidth;
 
-            // Ждем окончания анимации (в CSS стоит smooth)
             setTimeout(() => {
-                // Если мы на последней картинке (клоне)
                 if (track.scrollLeft >= maxScroll - 10) {
-                    track.style.scrollBehavior = 'auto'; // Выключаем плавность
-                    track.scrollLeft = 0;               // Прыгаем в начало
-                    track.style.scrollBehavior = 'smooth'; // Включаем обратно
+                    track.style.scrollBehavior = 'auto';
+                    track.scrollLeft = 0;
+                    track.style.scrollBehavior = 'smooth';
                 }
                 isMoving = false;
-            }, 600); // 600мс хватает для smooth-скролла
+            }, 600);
 
-        }, 4000); // Раз в 4 секунды
+        }, 4000);
     });
 </script>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const overlay = document.getElementById('cookie-overlay');
+            const acceptBtn = document.getElementById('accept-cookie');
+            const body = document.body;
+
+            function getCookie(name) {
+                let matches = document.cookie.match(new RegExp(
+                    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+                ));
+                return matches ? decodeURIComponent(matches[1]) : undefined;
+            }
+
+            function setCookie(name, value, days) {
+                let expires = "";
+                if (days) {
+                    let date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "") + expires + "; path=/; samesite=lax";
+            }
+
+            if (!getCookie('cookZavalituning')) {
+                overlay.classList.add('active');
+                body.classList.add('cookie-lock');
+            } else {
+                body.classList.remove('cookie-lock');
+            }
+
+            acceptBtn.addEventListener('click', function() {
+                setCookie('cookZavalituning', 'true', 365);
+
+                overlay.classList.remove('active');
+
+                setTimeout(() => {
+                    body.classList.remove('cookie-lock');
+                    overlay.style.display = 'none';
+                }, 400);
+            });
+        });
+    </script>
